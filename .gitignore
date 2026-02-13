@@ -1,0 +1,25 @@
+# User requested ignore
+verify_data.py
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+summative_venv/
+venv/
+.env
+
+# Data (Large files should not be committed)
+*.csv
+*.parquet
+data/yellow_tripdata_2019-01.csv
+cleaned_integrated_data.parquet
+
+# Logs (If you want to keep the report log, comment this out, but usually logs are ignored)
+# logs/
+# For this specific assignment, you might want to commit the final log, 
+# but generally running the script generates it.
+# I'll ignore the directory by default to keep the repo clean, 
+# but you can force add it if needed for the report.
