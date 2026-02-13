@@ -14,7 +14,7 @@ def process_data():
     DATA_DIR = Path('data')
     TRIP_FILE = DATA_DIR / 'yellow_tripdata_2019-01.csv'
     ZONE_FILE = DATA_DIR / 'taxi_zone_lookup.csv'
-    
+
     if not TRIP_FILE.exists() or not ZONE_FILE.exists():
         logging.error("Data files not found.")
         return
@@ -27,9 +27,9 @@ def process_data():
     logging.info(f"Loaded {initial_len} records.")
 
     mask = (
-        (df['fare_amount'] >= 0) & 
-        (df['trip_distance'] >= 0) & 
-        (df['passenger_count'].between(1, 9)) & 
+        (df['fare_amount'] >= 0) &
+        (df['trip_distance'] >= 0) &
+        (df['passenger_count'].between(1, 9)) &
         (df['tpep_dropoff_datetime'] > df['tpep_pickup_datetime'])
     )
     df = df[mask].copy()
@@ -37,14 +37,20 @@ def process_data():
 
     logging.info("Integrating zones...")
     zone_map = zones.set_index('LocationID')['Zone']
+    borough_map = zones.set_index('LocationID')['Borough']
+
     df['pickup_zone'] = df['PULocationID'].map(zone_map)
     df['dropoff_zone'] = df['DOLocationID'].map(zone_map)
+    df['pickup_borough'] = df['PULocationID'].map(borough_map)
+
+    # Extract hour for indexing
+    df['pickup_hour'] = df['tpep_pickup_datetime'].dt.hour
 
     logging.info("Engineering features...")
     df['trip_duration_min'] = (df['tpep_dropoff_datetime'] - df['tpep_pickup_datetime']).dt.total_seconds() / 60
-    
+
     df['trip_speed_mph'] = (df['trip_distance'] / (df['trip_duration_min'] / 60)).fillna(0)
-    
+
     df['fare_per_mile'] = (df['fare_amount'] / df['trip_distance']).replace([float('inf'), -float('inf')], 0).fillna(0)
 
     output_file = 'cleaned_integrated_data.parquet'
