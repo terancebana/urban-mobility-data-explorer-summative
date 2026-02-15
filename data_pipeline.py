@@ -19,8 +19,14 @@ def process_chunk(df, zones):
     df = df[mask].copy()
 
     zone_map = zones.set_index('LocationID')['Zone']
+    borough_map = zones.set_index('LocationID')['Borough']
+
     df['pickup_zone'] = df['PULocationID'].map(zone_map)
     df['dropoff_zone'] = df['DOLocationID'].map(zone_map)
+    df['pickup_borough'] = df['PULocationID'].map(borough_map)
+
+    # Extract hour for indexing
+    df['pickup_hour'] = df['tpep_pickup_datetime'].dt.hour
 
     df['trip_duration_min'] = (df['tpep_dropoff_datetime'] - df['tpep_pickup_datetime']).dt.total_seconds() / 60
     df['trip_speed_mph'] = (df['trip_distance'] / (df['trip_duration_min'] / 60)).fillna(0)
