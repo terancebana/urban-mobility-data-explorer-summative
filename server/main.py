@@ -1,15 +1,18 @@
 import os
-import sqlite3
+from flask_cors import CORS
+import psycopg2
+from psycopg2.extras import RealDictCursor
+from dotenv import load_dotenv
 from flask import Flask, request, jsonify
 
+load_dotenv()
+
 app = Flask(__name__)
+CORS(app)
 
 def get_db_connection():
     # Use absolute path relative to this script for robustness
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    db_path = os.path.join(base_dir, '..', 'assets', 'urban_mobility.db')
-    conn = sqlite3.connect(db_path)
-    conn.row_factory = sqlite3.Row # Allows us to access columns by name
+    conn = psycopg2.connect(os.environ.get('DATABASE_URL'))
     return conn
 
 @app.route('/api/trips', methods=['GET'])
@@ -17,13 +20,10 @@ def get_trips():
     # Capture options to filter from the request
     borough = request.args.get('borough')
     limit = request.args.get('limit', 100)
-
-    try:
-        limit = int(limit)
-    except ValueError:
-        limit = 100
+    offset = request.args.get('offset', 0)
 
     conn = get_db_connection()
+    cur = conn.cursor(cursor_factory=RealDictCursor)
     query = "SELECT * FROM trips"
     params = []
 
@@ -33,14 +33,13 @@ def get_trips():
 
     query += " LIMIT ?"
     params.append(limit)
+    params.append(offset)
 
-    try:
-        trips = conn.execute(query, params).fetchall()
-        return jsonify([dict(row) for row in trips])
-    except sqlite3.Error as e:
-        return jsonify({"error": str(e)}), 500
-    finally:
-        conn.close()
+    cur.execute(query, params)
+    trips = cur.fetchall()
+    conn.close()
+
+    return jsonify([dict(row) for row in trips])
 
 # PLACEHOLDER FOR VUX
 

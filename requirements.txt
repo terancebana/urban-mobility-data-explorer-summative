@@ -1,3 +1,8 @@
 flask
 pandas
 pyarrow
+psycopg2-binary
+sqlalchemy
+python-dotenv
+flask-cors
+geopandas
