@@ -7,3 +7,4 @@ Step 2: (Do this step to test the execution of data cleaning, database implement
              Run export_schema.py
 Step 3: Run server/main.py (you have to keep running this for the frontend and backend connection)
 
+Step 4
