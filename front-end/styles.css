@@ -1,0 +1,97 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: white;
+  color: #333;
+}
+
+header {
+  background: #2c3e50;
+  color: white;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  max-width: 100%;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  margin-right: 1rem;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+#filters {
+  background: #ecf0f1;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+#summary, #trips {
+  margin: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+#trips{
+  box-shadow: none;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+  overflow-x: auto;
+}
+
+th, td {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+tr:nth-child(even) {
+  background: #f9f9f9;
+}
+
+tr.outlier {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+#charts {
+  /* display: flex; */
+  justify-content: space-around;
+}
+#fareChart, #outlierChart {
+  width: 100%;  
+  max-width: 300px;
+  height: auto;
+  margin: 20px auto;
+  display: block;
+}
+#pagination {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+}
