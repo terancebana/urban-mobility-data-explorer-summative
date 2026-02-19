@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trips - Urban Mobility Explorer</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Urban Mobility Explorer</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="trips.html">Trips</a>
+      <a href="analytics.html">Analytics</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="filters">
+        <label for="borough">Borough:</label>
+        <select id="borough">
+            <option value="">All</option>
+            <option value="Manhattan">Manhattan</option>
+            <option value="Brooklyn">Brooklyn</option>
+            <option value="Queens">Queens</option>
+            <option value="Bronx">Bronx</option>
+            <option value="Staten Island">Staten Island</option>
+        </select>
+
+        <label for="limit">Limit:</label> 
+        <input type="number" id="limit" value="10"> 
+            
+        <label for="offset">Offset:</label> 
+        <input type="number" id="offset" value="0"> 
+            
+        <button onclick="loadTrips()">Load Trips</button>
+    </section>
+
+    
+
+    <!-- Trip table -->
+    <section id="trips">
+      <h2>Trips</h2> 
+            <table id="trips-table"> 
+                <thead> 
+                    <tr>
+                        <th>Pickup zone</th> 
+                        <th>Dropoff zone</th>
+                        <th>Pickup Time</th> 
+                        <th>Dropoff Time</th>
+                        <th>Distance</th> 
+                        <th>Fare</th> 
+                        <th>Fare/Mile</th> 
+                        <th>Overpaying</th> 
+                    </tr> </thead> 
+                    <tbody id="trips-body"></tbody> 
+            </table> </section>
+      <div id="pagination">
+        <button onclick="prevPage()">Previous</button>
+        <button onclick="nextPage()">Next</button>
+      </div>
+    </section>
+  </main>
+
+
+  <script src="app.js"></script>
+</body>
+</html>
