@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Spatial Mobility Map</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-text">NYC TAXI ANALYTICS</div>
+        <nav class="nav-items">
+            <a href="index.html" class="nav-item">Dashboard</a>
+            <a href="trips.html" class="nav-item">Trips Explorer</a>
+            <a href="spatial.html" class="nav-item active">Spatial Data</a>
+            <a href="analytics.html" class="nav-item">Analytics</a>
+            <a href="algorithm.html" class="nav-item">Manual Algorithm</a>
+            <a href="about.html" class="nav-item">About</a>
+        </nav>
+    </header>
+
+    <main class="content">
+        <h2 class="section-title" style="text-align: center; margin-bottom: 2rem;">NYC Mobility & Taxi Zone Distribution</h2>
+
+        <div class="viz-card" style="position: relative;">
+            <div id="map"></div>
+
+            <div id="map-legend" class="map-legend">
+                <h4 style="margin: 0 0 10px 0; color: var(--primary-text); font-size: 0.9rem;">Borough Legend</h4>
+                <div class="legend-item"><span class="dot" style="background: #ef4444;"></span> Manhattan</div>
+                <div class="legend-item"><span class="dot" style="background: #f59e0b;"></span> Brooklyn</div>
+                <div class="legend-item"><span class="dot" style="background: #10b981;"></span> Queens</div>
+                <div class="legend-item"><span class="dot" style="background: #3b82f6;"></span> Bronx</div>
+                <div class="legend-item"><span class="dot" style="background: #8b5cf6;"></span> Staten Island</div>
+                <div class="legend-item"><span class="dot" style="background: #6b7280;"></span> EWR / Others</div>
+            </div>
+        </div>
+    </main>
+    <footer style="text-align: center; padding: 2rem; color: var(--secondary-text); font-size: 0.8rem; border-top: 1px solid var(--border-color);">
+        &copy; 2026 NYC TAXI ANALYTICS - Urban Mobility Explorer
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>
