@@ -1,30 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Analytics - Urban Mobility Explorer</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <title>Fare Analytics - Urban Mobility</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-  <header>
-    <h1>Urban Mobility Explorer</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="trips.html">Trips</a>
-      <a href="analytics.html">Analytics</a>
-      <a href="about.html">About</a>
-    </nav>
-  </header>
+    <header class="header">
+        <div class="logo-text">NYC TAXI ANALYTICS</div>
+        <nav class="nav-items">
+            <a href="index.html" class="nav-item">Dashboard</a>
+            <a href="trips.html" class="nav-item">Trips Explorer</a>
+            <a href="spatial.html" class="nav-item">Spatial Data</a>
+            <a href="analytics.html" class="nav-item active">Analytics</a>
+            <a href="algorithm.html" class="nav-item">Manual Algorithm</a>
+            <a href="about.html" class="nav-item">About</a>
+        </nav>
+    </header>
 
-  <main>
-    <section id="charts">
-      <h2>Fare Analytics</h2>
-      <canvas id="fareChart" width="10px" height="10px"></canvas>
-      <canvas id="outlierChart" width="100" height="100"></canvas>
-    </section>
-  </main>
+    <main class="content">
+        <div class="section-header">
+            <h2 class="section-title">Fare Statistical Analysis</h2>
+        </div>
 
-  <script src="app.js"></script>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Avg Fare / Mile</div>
+                <div class="stat-value" id="avgFareAnalytics">--</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Std Dev (Fare/Mile)</div>
+                <div class="stat-value" id="stdDevFare">--</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Outlier Trips</div>
+                <div class="stat-value" id="outlierCount">--</div>
+            </div>
+        </div>
+
+        <div id="analytics-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+            <div class="viz-card">
+                <h3 class="section-title">Fare vs Variation</h3>
+                <canvas id="fareChart"></canvas>
+            </div>
+            <div class="viz-card">
+                <h3 class="section-title">Outlier Distribution</h3>
+                <canvas id="outlierPieChart"></canvas>
+            </div>
+        </div>
+    </main>
+    <footer style="text-align: center; padding: 2rem; color: var(--secondary-text); font-size: 0.8rem; border-top: 1px solid var(--border-color);">
+        &copy; 2026 NYC TAXI ANALYTICS - Urban Mobility Explorer
+    </footer>
+    <script src="app.js"></script>
 </body>
 </html>
