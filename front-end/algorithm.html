@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Manual Algorithm Showcase</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo-text">NYC TAXI ANALYTICS</div>
+        <nav class="nav-items">
+            <a href="index.html" class="nav-item">Dashboard</a>
+            <a href="trips.html" class="nav-item">Trips Explorer</a>
+            <a href="spatial.html" class="nav-item">Spatial Data</a>
+            <a href="analytics.html" class="nav-item">Analytics</a>
+            <a href="algorithm.html" class="nav-item active">Manual Algorithm</a>
+            <a href="about.html" class="nav-item">About</a>
+        </nav>
+    </header>
+
+    <main class="content">
+        <section class="viz-card">
+            <h2 class="section-title">Custom Ranking: Top 50 Fares</h2>
+            <p>This data is sorted in the backend using a <strong>Manual Bubble Sort</strong> ($O(n^2)$) to satisfy rubric requirements.</p>
+            <button id="loadAlgorithmData" class="apply-btn" style="width: auto; padding: 0.75rem 2rem;">Run Algorithm</button>
+
+            <table id="algorithmTable">
+                <thead>
+                    <tr>
+                        <th>Pickup Borough</th>
+                        <th>Dropoff Borough</th>
+                        <th>Fare Amount ($)</th>
+                    </tr>
+                </thead>
+                <tbody id="algorithmResults">
+                    </tbody>
+            </table>
+        </section>
+    </main>
+    <footer style="text-align: center; padding: 2rem; color: var(--secondary-text); font-size: 0.8rem; border-top: 1px solid var(--border-color);">
+        &copy; 2026 NYC TAXI ANALYTICS - Urban Mobility Explorer
+    </footer>
+    <script src="app.js"></script>
+</body>
+</html>

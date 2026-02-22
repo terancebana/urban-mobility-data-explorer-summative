@@ -1,39 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>About - Urban Mobility Explorer</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Urban Mobility Explorer</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>Urban Mobility Explorer</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="trips.html">Trips</a>
-      <a href="analytics.html">Analytics</a>
-      <a href="about.html">About</a>
-    </nav>
-  </header>
+    <header class="header">
+        <div class="logo-text">NYC TAXI ANALYTICS</div>
+        <nav class="nav-items">
+            <a href="index.html" class="nav-item">Dashboard</a>
+            <a href="trips.html" class="nav-item">Trips Explorer</a>
+            <a href="spatial.html" class="nav-item">Spatial Data</a>
+            <a href="analytics.html" class="nav-item">Analytics</a>
+            <a href="algorithm.html" class="nav-item">Manual Algorithm</a>
+            <a href="about.html" class="nav-item active">About</a>
+        </nav>
+    </header>
 
-  <main>
-    <section>
-      <h2>About This Project</h2>
-      <p>
-        The Urban Mobility Explorer analyzes taxi trip data to uncover fare patterns,
-        trip distances, borough-level statistics, and outliers.
-      </p>
-      <p>
-        Built with Flask, PostgreSQL, and vanilla JavaScript, it demonstrates how APIs
-        and dynamic rendering can create interactive data-driven applications.
-      </p>
-    </section>
-  </main>
+    <main class="content">
+        <div class="viz-card">
+            <h2 class="section-title">About the Explorer</h2>
+            <div class="info-content">
+                <p>
+                    The <strong>Urban Mobility Explorer</strong> is a comprehensive visual analytics platform designed to analyze massive datasets of NYC Yellow Taxi trips.
+                </p>
+                <p>
+                    Our platform focuses on identifying market inefficiencies and understanding fare dynamics across different New York boroughs. By leveraging high-performance data processing pipelines and modern web visualization technologies, we provide insights into travel patterns, pricing trends, and logistical outliers.
+                </p>
 
-  <footer>
-    <p>&copy; 2026 Urban Mobility Explorer</p>
-  </footer>
+                <h3 class="sub-section-title">Key Features</h3>
+                <ul class="feature-list">
+                    <li class="feature-item"><strong>Real-time Analytics:</strong> Instant computation of averages, standard deviations, and speed metrics.</li>
+                    <li class="feature-item"><strong>Outlier Detection:</strong> Marking trips where passengers may be overpaying base on statistical distributions.</li>
+                    <li class="feature-item"><strong>Spatial Mapping:</strong> Integrated geospatial views of taxi zones and trip distributions.</li>
+                </ul>
+            </div>
+        </div>
 
-  <script src="app.js"></script>
+        <div class="viz-card">
+            <h2 class="section-title">About Us</h2>
+            <div class="info-content">
+                <h4 class="sub-section-title">Project Github</h4>
+                <ul class="github-links">
+                    <li><a href="https://github.com/terancebana/urban-mobility-data-explorer-summative">Urban Mobility Data Explorer</a></li>
+                </ul>
+
+                <h4 class="sub-section-title">Personal Githubs</h4>
+                <ul class="github-links">
+                    <li><a href="https://github.com/NTIVUNWA250">Gilbert NTIVUNWA</a></li>
+                    <li><a href="https://github.com/RobertNiyonkuru98">Robert Niyonkuru</a></li>
+                    <li><a href="https://github.com/terancebana">Bana Terance CYUZUZO</a></li>
+                    <li><a href="https://github.com/bonheurdivin">Divin Bonheur MUNEZERO</a></li>
+                </ul>
+            </div>
+        </div>
+
+         <div class="viz-card">
+            <h2 class="section-title">Technologies Used</h2>
+            <div class="info-content">
+                <ul class="tech-stack">
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>JavaScript</li>
+                    <li>Python</li>
+                    <li>PostgreSQL</li>
+                    <li>Flask</li>
+                    <li>Leaflet</li>
+                    <li>Chart.js</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="viz-card">
+            <h2 class="section-title">Data Sources</h2>
+            <div class="info-content">
+                <ul class="tech-stack">
+                    <li>NYC Yellow Taxi Trip Records</li>
+                    <li>NYC Taxi Zones</li>
+                    <li>NYC Taxi Fare Data</li>
+                    <li>NYC Taxi Speed Data</li>
+                    <li>NYC Taxi Time Data</li>
+                    <li>NYC Taxi Location Data</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="viz-card">
+            <h2 class="section-title">Version</h2>
+            <div class="info-content">
+                <p class="version-info">Build: 1.0.0</p>
+            </div>
+        </div>
+    </main>
+    <footer style="text-align: center; padding: 2rem; color: var(--secondary-text); font-size: 0.8rem; border-top: 1px solid var(--border-color);">
+        &copy; 2026 NYC TAXI ANALYTICS - Urban Mobility Explorer
+    </footer>
+    <script src="app.js"></script>
 </body>
 </html>

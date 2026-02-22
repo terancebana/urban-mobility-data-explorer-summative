@@ -2,66 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NYC Urban Mobility Data Explore</title>
+    <title>NYC Taxi Analytics - Dashboard</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <header>
-        <h1>Urban Mobility Data Explore NYC</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="trips.html">Trips</a>
-            <a href="analytics.html">Analytics</a>
-            <a href="about.html">About</a>
+    <header class="header">
+        <div class="logo-text">NYC TAXI ANALYTICS</div>
+        <nav class="nav-items">
+            <a href="index.html" class="nav-item active">Dashboard</a>
+            <a href="trips.html" class="nav-item">Trips Explorer</a>
+            <a href="spatial.html" class="nav-item">Spatial Data</a>
+            <a href="analytics.html" class="nav-item">Analytics</a>
+            <a href="algorithm.html" class="nav-item">Manual Algorithm</a>
+            <a href="about.html" class="nav-item">About</a>
         </nav>
     </header>
-    
-    <main>
-        <section id="filters">
-            <label for="borough">Borough:</label>
-            <select id="borough">
-                <option value="">All</option>
-                <option value="Manhattan">Manhattan</option>
-                <option value="Brooklyn">Brooklyn</option>
-                <option value="Queens">Queens</option>
-                <option value="Bronx">Bronx</option>
-                <option value="Staten Island">Staten Island</option>
-            </select>
 
-            <label for="limit">Limit:</label> 
-            <input type="number" id="limit" value="10"> 
-            
-            <label for="offset">Offset:</label> 
-            <input type="number" id="offset" value="0"> 
-            
-            <button onclick="loadTrips()">Load Trips</button>
-        </section>
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="filter-group">
+                <label>Pickup Borough</label>
+                <select id="boroughFilter" class="filter-input">
+                    <option value="">All Boroughs</option>
+                    <option value="Manhattan">Manhattan</option>
+                    <option value="Brooklyn">Brooklyn</option>
+                    <option value="Queens">Queens</option>
+                    <option value="Bronx">Bronx</option>
+                    <option value="Staten Island">Staten Island</option>
+                </select>
+                <button id="applyFilters" class="apply-btn">APPLY FILTERS</button>
+            </div>
+        </aside>
 
-        <section id="summary"> 
-            <h2>Summary</h2> 
-            <div id="summary-content"></div> 
-        </section> 
-        
-        <section id="trips"> 
-            <h2>Trips</h2> 
-            <table id="trips-table"> 
-                <thead> 
-                    <tr>
-                        <th>Pickup zone</th> 
-                        <th>Dropoff zone</th>
-                        <th>Pickup Time</th> 
-                        <th>Dropoff Time</th>
-                        <th>Distance</th> 
-                        <th>Fare</th> 
-                        <th>Fare/Mile</th> 
-                        <th>Overpaying</th> 
-                    </tr> </thead> 
-                    <tbody id="trips-body"></tbody> 
-            </table> </section>
-        </section>    
-    </main>
+        <main class="content">
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Total Trips Analyzed</div>
+                    <div id="totalTrips" class="stat-value">--</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Avg. Speed (km/h)</div>
+                    <div id="avgSpeed" class="stat-value">--</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Avg. Fare ($)</div>
+                    <div id="avgFare" class="stat-value">--</div>
+                </div>
+            </section>
 
+            <section class="viz-card">
+                <h2 class="section-title">Trip Volume</h2>
+                <canvas id="tripChart"></canvas>
+            </section>
+        </main>
+    </div>
+    <footer style="text-align: center; padding: 2rem; color: var(--secondary-text); font-size: 0.8rem; border-top: 1px solid var(--border-color);">
+        &copy; 2026 NYC TAXI ANALYTICS - Urban Mobility Explorer
+    </footer>
     <script src="app.js"></script>
 </body>
 </html>

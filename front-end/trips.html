@@ -1,69 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Trips - Urban Mobility Explorer</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <title>Manual Algorithm Showcase</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>Urban Mobility Explorer</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="trips.html">Trips</a>
-      <a href="analytics.html">Analytics</a>
-      <a href="about.html">About</a>
-    </nav>
-  </header>
+    <header class="header">
+        <div class="logo-text">NYC TAXI ANALYTICS</div>
+        <nav class="nav-items">
+            <a href="index.html" class="nav-item">Dashboard</a>
+            <a href="trips.html" class="nav-item active">Trips Explorer</a>
+            <a href="spatial.html" class="nav-item">Spatial Data</a>
+            <a href="analytics.html" class="nav-item">Analytics</a>
+            <a href="algorithm.html" class="nav-item">Manual Algorithm</a>
+            <a href="about.html" class="nav-item">About</a>
+        </nav>
+    </header>
 
-  <main>
-    <section id="filters">
-        <label for="borough">Borough:</label>
-        <select id="borough">
-            <option value="">All</option>
-            <option value="Manhattan">Manhattan</option>
-            <option value="Brooklyn">Brooklyn</option>
-            <option value="Queens">Queens</option>
-            <option value="Bronx">Bronx</option>
-            <option value="Staten Island">Staten Island</option>
-        </select>
+    <main class="content">
+    <div class="section-header">
+        <h2 class="section-title">All Trips Explorer</h2>
+        <div class="section-controls">
+            <input type="text" id="tripSearch" class="search-box" placeholder="Search by Borough...">
+            <button id="searchBtn" class="apply-btn" style="width: auto; padding: 0.5rem 1.5rem;">Search</button>
+        </div>
+    </div>
 
-        <label for="limit">Limit:</label> 
-        <input type="number" id="limit" value="10"> 
-            
-        <label for="offset">Offset:</label> 
-        <input type="number" id="offset" value="0"> 
-            
-        <button onclick="loadTrips()">Load Trips</button>
-    </section>
+    <div id="tripListContainer">
+        <p class="loading-text">Select a borough to explore trips...</p>
+    </div>
 
-    
-
-    <!-- Trip table -->
-    <section id="trips">
-      <h2>Trips</h2> 
-            <table id="trips-table"> 
-                <thead> 
-                    <tr>
-                        <th>Pickup zone</th> 
-                        <th>Dropoff zone</th>
-                        <th>Pickup Time</th> 
-                        <th>Dropoff Time</th>
-                        <th>Distance</th> 
-                        <th>Fare</th> 
-                        <th>Fare/Mile</th> 
-                        <th>Overpaying</th> 
-                    </tr> </thead> 
-                    <tbody id="trips-body"></tbody> 
-            </table> </section>
-      <div id="pagination">
-        <button onclick="prevPage()">Previous</button>
-        <button onclick="nextPage()">Next</button>
-      </div>
-    </section>
-  </main>
-
-
-  <script src="app.js"></script>
+    <div class="pagination">
+        <button class="page-btn" id="prevPage">← Prev</button>
+        <span id="pageNumber">Page 1</span>
+        <button class="page-btn" id="nextPage">Next →</button>
+    </div>
+</main>
+    <footer style="text-align: center; padding: 2rem; color: var(--secondary-text); font-size: 0.8rem; border-top: 1px solid var(--border-color);">
+        &copy; 2026 NYC TAXI ANALYTICS - Urban Mobility Explorer
+    </footer>
+    <script src="app.js"></script>
 </body>
 </html>
